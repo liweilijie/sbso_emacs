@@ -1,9 +1,15 @@
-# hello this is my first markdown notes; #
+这是我的markdown笔记信息
+==========
+
+*insert title '`C-c C-t t`'*
+
+* 帮助信息：`C-c C-h`
+
 
 * * * * *
 
-* Anchors: `C-c C-a`
-	- C-c C-a l : [baidu by liwei](http://www.baidu.com)
+### 锚标签(Anchors '`C-c C-a`') ###
+	- C-c C-a l : [liwei's blog](http://www.liwei.tk)
 	- C-c C-a w: 
 
 * Commands: `C-c C-c`:
