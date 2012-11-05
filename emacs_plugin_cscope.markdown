@@ -23,9 +23,9 @@ source code install cscope
 ### 然后在.emacs里面增加加载命令(require 'xcscope) ###
 
 **详细的教程请阅读'`xcscope.el`文件即可。**
-## cscope-indexer -r ##
+### cscope-indexer -r ###
 
-## 快捷键命令 ##
+### 快捷键命令 ###
 
 	> C-c s s : Find symbol.
 	> C-c s d : Find global definition.
