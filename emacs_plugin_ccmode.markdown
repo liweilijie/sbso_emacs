@@ -10,17 +10,17 @@ insert anchors: *'`C-c C-a l`'*
 
 ### 2.配置cc-mode ###
 
-- '`c-basic-offset`' : 设置缩进字符数。
+'`c-basic-offset`' : 设置缩进字符数。
 
-	(setq c-basic-offset 2)
+    (setq c-basic-offset 2)
 	
-- **The (indentation) style** :
+**The (indentation) style** :
 
 	(setq c-default-style '((java-mode . "java")
 		(awk-mode . "awk")
 		(other . "linux")))
 
-- **Making the <RET> key indent the new line** :
+**Making the <RET> key indent the new line** :
 
 	(defun my-make-CR-do-indent ()
 		(define-key c-mode-base-map "\C-m" 'c-context-line-break))
