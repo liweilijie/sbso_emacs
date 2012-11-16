@@ -6,9 +6,23 @@ vc下CString一些方法记录
 
 #### 1. 处理字符串的一些方法 ####
 
-- '`CString Mid(int nFirst) const; CString Mid(int nFirst, int nCount) const;`': nCount代表要提取的字符数，nFirst代表要提取的开始索引位置。
+- '`CString Mid(int nFirst) const;`':
+- '`CString Mid(int nFirst, int nCount) const;`': 
+    * nCount代表要提取的字符数，nFirst代表要提取的开始索引位置。
+	
+	
+==========
+
 - '`CString Left(int nCount) const;`' : 返回的字符串是前nCount个字符。
-- '`CString::Find; int Find(TCHAR ch)const; int Find(LPCTSTR s) const; int Find(TCHAR ch, int nStart) const; int Find(LPCTSTR s, int nStart) cont;`' : 返回值：不匹配的话返回-1;索引以0开始。nStart代码以索引值nStart的字符开始搜索。返回此CString对象中与需要的子字符串或字符匹配的第一个字符的从零开始的索引；如果没有找到子字符串或字符则返回-1。
+
+==========
+
+- '`CString::Find; `':
+- '`int Find(TCHAR ch)const;`':
+- '`int Find(LPCTSTR s) const;`':
+- '`int Find(TCHAR ch, int nStart) const;`':
+- '`int Find(LPCTSTR s, int nStart) cont;`' : 
+  * 返回值：不匹配的话返回-1;索引以0开始。nStart代码以索引值nStart的字符开始搜索。返回此CString对象中与需要的子字符串或字符匹配的第一个字符的从零开始的索引；如果没有找到子字符串或字符则返回-1。
 
 
 #### 2.数据库处理 ####
