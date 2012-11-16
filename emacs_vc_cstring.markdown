@@ -13,4 +13,5 @@ vc下CString一些方法记录
 
 #### 2.数据库处理 ####
 
-- '**Access多个表join查询问题**': 在Access中如果利用join多表连接时，会出现问题，提示不支持。但是还是有办法的。办法就是加括号。例如'`select a.*, b.* from (a left join b on a.id = b.id) left join c on c.a = b.a;`' 但是当我要加多个条件且还要进行order by时，则还是叠加括号即可：'`select a.*, b.* from (a left join b on (a.id = b.id and a.id > 0)) order by a.id`'.
+- **Access多个表join查询问题**: 
+    * 在Access中如果利用join多表连接时，会出现问题，提示不支持。但是还是有办法的。办法就是加括号。例如'`select a.*, b.* from (a left join b on a.id = b.id) left join c on c.a = b.a;`' 但是当我要加多个条件且还要进行order by时，则还是叠加括号即可：'`select a.*, b.* from (a left join b on (a.id = b.id and a.id > 0)) order by a.id`'.
