@@ -51,8 +51,12 @@ source code install cscope
 - Cscope在生成数据库中，在你的项目目录中未找到的头文件，会自动到/usr/include目录中查找。如果你想阻止它这样做，使用“-k”选项。
 - Cscope缺省只解析C文件(.c和.h)、lex文件(.l)和yacc文件(.y)，虽然它也可以支持C++以及Java，但它在扫描目录时会跳过C++及Java后缀的文件。如果你希望cscope解析C++或Java文件，需要把这些文件的名字和路径保存在一个名为cscope.files的文件。当cscope发现在当前目录中存在cscope.files时，就会为cscope.files中列出的所有文件生成索引数据库。
 
+* * * * *
+
     find . -name "*.h" -o -name "*.c" -o -name "*.cc"  -o -name "*.cpp" -o -name "*.hpp" > cscope.files
 	cscope -bkq -i cscope.files
+
+* * * * *
 
 ### 快捷键命令 ###
 
@@ -68,4 +72,6 @@ source code install cscope
 	> C-c s i : Find files #include a file
 	> C-c s p : 查找到的函数上次出现的位置。
 	> C-c s n : 查找到的函数下次出现的位置。
+
+* * * * *
 
