@@ -53,8 +53,8 @@ source code install cscope
 
 * * * * *
 
-    find . -name "*.h" -o -name "*.c" -o -name "*.cc"  -o -name "*.cpp" -o -name "*.hpp" > cscope.files
-	cscope -bkq -i cscope.files
+    #find . -name "*.h" -o -name "*.c" -o -name "*.cc"  -o -name "*.cpp" -o -name "*.hpp" > cscope.files /* -o 表示or的关系 */
+	cscope -Rbkq -i cscope.files
 
 * * * * *
 
@@ -73,5 +73,30 @@ source code install cscope
 	> C-c s p : 查找到的函数上次出现的位置。
 	> C-c s n : 查找到的函数下次出现的位置。
 
+
 * * * * *
 
+### 当然可以绑定你想要的键，脚本注释这样写的： ###
+
+	;; 5. If you intend to use xcscope.el often you can optionally edit your
+	;;    ~/.emacs file to add keybindings that reduce the number of keystrokes
+	;;    required.  For example, the following will add "C-f#" keybindings, which
+	;;    are easier to type than the usual "C-c s" prefixed keybindings.  Note
+	;;    that specifying "global-map" instead of "cscope:map" makes the
+	;;    keybindings available in all buffers:
+	;;
+	;;	(define-key global-map [(control f3)]  'cscope-set-initial-directory)
+	;;	(define-key global-map [(control f4)]  'cscope-unset-initial-directory)
+	;;	(define-key global-map [(control f5)]  'cscope-find-this-symbol)
+	;;	(define-key global-map [(control f6)]  'cscope-find-global-definition)
+	;;	(define-key global-map [(control f7)]
+	;;	  'cscope-find-global-definition-no-prompting)
+	;;	(define-key global-map [(control f8)]  'cscope-pop-mark)
+	;;	(define-key global-map [(control f9)]  'cscope-next-symbol)
+	;;	(define-key global-map [(control f10)] 'cscope-next-file)
+	;;	(define-key global-map [(control f11)] 'cscope-prev-symbol)
+	;;	(define-key global-map [(control f12)] 'cscope-prev-file)
+	;;      (define-key global-map [(meta f9)]  'cscope-display-buffer)
+	;;      (defin-ekey global-map [(meta f10)] 'cscope-display-buffer-toggle)
+	;;
+	    
