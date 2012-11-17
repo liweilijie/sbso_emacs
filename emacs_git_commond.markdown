@@ -11,6 +11,9 @@ git常用命令
 
 - '`git pull origin master`' : 相当于从远程获取最新版本并且merge到本地仓库中。git-pull = git-fetch + git-merge.
 - '`git fetch and git merge`' : 
+
+* * * * *
+
     
 	git fetch origin master
 	git log -p master origin/master
