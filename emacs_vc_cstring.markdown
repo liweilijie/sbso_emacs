@@ -31,3 +31,22 @@ vc下CString一些方法记录
 
 * * * * *
 
+#### 3.CMarkup xml库 ####
+
+在vc中，需要用到xml库来缓存一些信息。只是首先地写xml与读xml操作，于是挑了一个可以得到源码且很轻量的xml库来操作-CMarkup库。
+
+在使用中遇到编码问题，因为我需要解释编码出来。
+
+我的app环境是gb2312的，而在往服务器侧发送数据是utf-8格式的。想要将utf-8的数据以utf-8的格式存放在xml文件中这一点比较困难，我还是绕道行之，将utf-8首先转为gb2312的，然后再做存储。存储之后加载时遇到问题。后来发现无论是在写还是读都要有如下代码才可以正常工作：
+    
+	CMarkup xml;
+	
+	/* whatever read or write and must add this function to set encoding */
+	xml.SetDoc("<?xml version=\"1.0\" encoding=\"GB2312\"?>\r\n");
+	
+	if (xml.Load(path))
+	{
+	    /* to do */
+	}
+
+这个问题整整花了我一天时间啊。
