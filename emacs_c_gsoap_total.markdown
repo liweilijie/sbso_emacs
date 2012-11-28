@@ -35,7 +35,15 @@ gsoap一些备忘
 	static void *dime_write_open(struct soap*, const char*, const char*, const char*);
 	static void dime_write_close(struct soap*, void*);
 	static int dime_write(struct soap*, void*, const char*, size_t);
-	    
+
+
+另外，我在写服务器程序时用了c语言，而在客户端时用的是c++的方式，这两种语言间的方法应该是这样的。
+
+**server侧利用wsdl文件生成hotel.h文件** -> **手动添加到hotle.h文件传输的部分代码定义**
+
+**client侧利用wsdl文件生成hotel.h文件** -> **手动将server侧的hotel.h文件里面文件传输的代码部分原样地复制过来即可。**
+
+
 
 * * * * *
 
