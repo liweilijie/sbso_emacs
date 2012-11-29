@@ -47,3 +47,57 @@ gsoap一些备忘
 
 * * * * *
 
+### gsoap文件传输异常 ###
+
+在利用gsoap进行文件传输时，发现有不少的bug,其实这些bug并不是它官方给的库有问题，而是咱们在使用的时候不当会导致一些无法预知的bug。
+
+这里引用一个下载文件的例子。在下载文件时，如果文件不存在在服务器上，或者在服务器侧fopen一个文件时出错了，就会导致gsoap库里面引用时指针异常退出。在一个空指针里面去fread肯定会出错了。
+
+还有一个问题，当客户端向服务器下载文件时，我不知道设备的ID号等信息，所以我想利用一个平台不存在的文件，让设备来请求，靠这种方式得到其设备的ID号。在平台上形成记录的作用。
+
+先看看我修改后的代码吧：
+
+
+    int m__GetData(struct soap *soap, struct x__Keys *keys, struct m__GetDataResponse *response)
+	{ 
+		struct m__GetDataResponse *t = NULL;
+
+	    char files[10][256];
+	    memset(files, '\0', sizeof(files));
+
+    	int i, k;
+        char *file = (char *)soap_malloc(soap, 256);
+	    memset(file, '\0', 256);
+        if ((soap->omode & SOAP_IO) == SOAP_IO_STORE)
+          soap->omode = (soap->omode & ~SOAP_IO) | SOAP_IO_BUFFER;
+        if (!keys)
+			return soap_sender_fault(soap, "No keys", NULL);
+
+	    for (i = 0, k = 0; i < keys->__size; ++i)
+        { 
+			if ((strstr(keys->key[i], "ly_codec_dictionary.inf")))
+			{
+				memset(file, '\0', 256);
+				snprintf(file, 256, "/www/ly_codec_dictionary.inf");
+				
+				if (!access(file, F_OK))
+				{
+					memcpy(files[k], file, strlen(file));
+					k++;
+				}
+			}
+			else
+				write_app_log("[%s] keys->key[%d] = %s. drop it. maybe this is message from client.", __func__, i, keys->key[i]);
+		}
+
+	/* Set up array of attachments to return */
+	response->x__data.__size = k;
+	response->x__data.item = (struct x__Data *)soap_malloc(soap, k*sizeof(struct x__Data));
+
+	for (i = 0; i < k; i++)
+		open_data(soap, files[i], &response->x__data.item[i]);
+
+	return SOAP_OK;
+	}
+
+    
