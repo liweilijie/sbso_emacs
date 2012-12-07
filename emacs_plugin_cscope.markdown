@@ -72,6 +72,7 @@ source code install cscope
 	> C-c s i : Find files #include a file
 	> C-c s p : 查找到的函数上次出现的位置。
 	> C-c s n : 查找到的函数下次出现的位置。
+	> C-c s u : M-x cscope-pop-mark 跳转返回
 
 
 * * * * *

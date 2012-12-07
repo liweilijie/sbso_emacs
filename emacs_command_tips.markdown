@@ -50,3 +50,40 @@
 #### 跳转 ####
 
 - '`C-M-n C-M-p`':在大括号之前来回跳转。
+
+#### Buffer is read-only: #<buffer ####
+
+最近在用emacs -nw开发代码时，常常遇到**Buffer is read-only: #<buffer** 这种提示。尤其是在利用cscope进行各种查询跳转时，让人抓狂。
+
+后来在论坛里面发贴有人说到可以使用o,j来进行跳转。
+
+而如果发生read-only的情况。最后利用 `C-x C-q`来进行解除只读后，再进行操作。
+
+    27.7 Read-Only Buffers
+
+	If a buffer is read-only, then you cannot change its contents, although you may change your view of the contents by scrolling and narrowing.
+
+	Read-only buffers are used in two kinds of situations:
+
+	A buffer visiting a write-protected file is normally read-only.
+	Here, the purpose is to inform the user that editing the buffer with the aim of saving it in the file may be futile or undesirable. The user who wants to change the buffer text despite this can do so after clearing the read-only flag with C-x C-q.
+
+	Modes such as Dired and Rmail make buffers read-only when altering the contents with the usual editing commands would probably be a mistake.
+	The special commands of these modes bind buffer-read-only to nil (with let) or bind inhibit-read-only to t around the places where they themselves change the text.
+
+	— Variable: buffer-read-only
+	This buffer-local variable specifies whether the buffer is read-only. The buffer is read-only if this variable is non-nil.
+
+	— Variable: inhibit-read-only
+	If this variable is non-nil, then read-only buffers and, depending on the actual value, some or all read-only characters may be modified. Read-only characters in a buffer are those that have non-nil read-only properties (either text properties or overlay properties). See Special Properties, for more information about text properties. See Overlays, for more information about overlays and their properties.
+
+	If inhibit-read-only is t, all read-only character properties have no effect. If inhibit-read-only is a list, then read-only character properties have no effect if they are members of the list (comparison is done with eq).
+
+	— Command: toggle-read-only &optional arg
+	This command toggles whether the current buffer is read-only. It is intended for interactive use; do not use it in programs (it may have side-effects, such as enabling View mode, and does not affect read-only text properties). To change the read-only state of a buffer in a program, explicitly set buffer-read-only to the proper value. To temporarily ignore a read-only state, bind inhibit-read-only.
+
+	If arg is non-nil, it should be a raw prefix argument. toggle-read-only sets buffer-read-only to t if the numeric value of that prefix argument is positive and to nil otherwise. See Prefix Command Arguments.
+
+	— Function: barf-if-buffer-read-only
+	This function signals a buffer-read-only error if the current buffer is read-only. See Using Interactive, for another way to signal an error if the current buffer is read-only.
+	    
