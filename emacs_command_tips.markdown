@@ -87,3 +87,18 @@
 	— Function: barf-if-buffer-read-only
 	This function signals a buffer-read-only error if the current buffer is read-only. See Using Interactive, for another way to signal an error if the current buffer is read-only.
 	    
+
+#### C-M-k ####
+
+有时候删除一个变量里，利用struct_variable，利用 `M-d` 只能删除struct，而不能全部删除。而利用 `C-M-k` 则可以完全删除了。
+
+##### M-x write-region #####
+
+在vim之中很多时候会将选中的内容另存在一个文件里面，而emacs如何实现呢？ 
+
+`M-x write-region`
+
+这个是由 `C-x C-w` 保存文件的方法是 `write-file`联想到的。
+
+
+vim中的替换命令r如何实现？
